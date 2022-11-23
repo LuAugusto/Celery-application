@@ -1,0 +1,3 @@
+from task import import_locations_forecasts_task_cron
+
+import_locations_forecasts_task_cron.delay()
