@@ -18,6 +18,12 @@ sendo assim é necessário possui o docker na máquina para que consiga utilizia
 
 ## Disponibilizando dependências (Containers)
 
+Clonando repositório:
+
+```bash
+git clone https://github.com/LuAugusto/Celery-application.git
+```
+
 Para utilizar a aplicação é necessário dispor os containers
 
 ```bash
