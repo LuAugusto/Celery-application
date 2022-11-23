@@ -12,7 +12,7 @@ Com o preenchimento prévio da base, o objetivo principal é disponibilizar os d
 
 As dependências da aplicação que é o mongodb e o rabbitmq que estão disponiveis através do docker com imagens oficiais recomendadas pela documentação, o Celery utiliza o rabbitMQ como broker das tarefas e um mongodb para armazenamento dos dados finais.
 
-sendo assim é necessário possui o docker na máquina para que consiga utiliziar a aplicação
+sendo assim é necessário possuir o docker na máquina para que consiga utiliziar a aplicação
 
 # Utilizando a aplicação
 
