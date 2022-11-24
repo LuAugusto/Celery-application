@@ -1,12 +1,12 @@
 from settings import variables
 from config.requester import Requester
-from database.feed_database import FeedDatabase
+from database.database import Database
 
 requester = Requester(variables.WEATHER_API_URL)
 
 class ImportForecasts():
     def import_forecasts(self, city: str):
-        feed_database = FeedDatabase(variables.COLLECTION_FORECAST)
+        feed_database = Database(variables.COLLECTION_FORECAST)
 
         body = self.fetch_data(city)
         

@@ -1,10 +1,10 @@
 import requests
 import json
 from settings import variables
-from database.feed_database import FeedDatabase
+from database.database import Database
 from config.errors import Errors
 
-feed_database = FeedDatabase(variables.COLLECTION_LOGS_ERROR)
+feed_database = Database(variables.COLLECTION_LOGS_ERROR)
 
 class Requester():
     def __init__(self, url: str) -> None:

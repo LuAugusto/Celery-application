@@ -1,9 +1,9 @@
 from settings import variables
 from config.literal import locations
-from database.feed_database import FeedDatabase
+from database.database import Database
 
 def import_location():
-    feed_database = FeedDatabase(variables.COLLECTION_LOCATION)
+    feed_database = Database(variables.COLLECTION_LOCATION)
 
     for location in locations:
         location_exist = feed_database.get_collection().find_one({'city': location})
