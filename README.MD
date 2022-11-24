@@ -86,8 +86,10 @@ python app.py
 ```
 
 Após isso o nosso worker vai iniciar um trabalho com nossas tasks.
-Cada tarefa é executada de modo assíncrono para cada localidade, no nosso terminal onde executamos o comando.
+Cada tarefa é executada de modo assíncrono para cada localidade.
 
 Podemos ver o andamento das nossas tasks no terminal ou
 podemos utilizar um software para visualizar nossa base de dados com mais clareza, recomendações:
 robo3t ou mongo compass.
+
+Visto que o mongo é executado nosso container docker, podemos conectar na URL: mongodb://localhost:27017
