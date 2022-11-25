@@ -10,7 +10,7 @@ Com o preenchimento prévio da base, o objetivo principal é disponibilizar os d
 
 ## Informações sobre a aplicação
 
-As dependências da aplicação que é o mongodb e o rabbitmq que estão disponiveis através do docker com imagens oficiais recomendadas pela documentação, o Celery utiliza o rabbitMQ como broker das tarefas e um mongodb para armazenamento dos dados finais.
+As dependências da aplicação que é o mongodb, broker e o rabbitmq que estão disponiveis através do docker com imagens oficiais recomendadas pela documentação, o Celery utiliza o rabbitMQ como broker das tarefas e um mongodb para armazenamento dos dados finais.
 
 sendo assim é necessário possuir o docker na máquina para que consiga utiliziar a aplicação
 
@@ -47,49 +47,23 @@ pip install -r requirements.txt
 ```
 
 ```bash
+docker-compose build
+```
+
+```bash
 docker-compose up
 ```
 
-## Preenchendo previamente a base de dados com informações de previsões temporais com o Celery
-
-Executando nosso worker para que o celery esteja pronto para receber tasks:
-Obs: Esse comando deixa o terminal em modo 'attached' para visualizar o trabalho do worker.
-
 ```bash
-celery -A task worker -l info --pool=solo
+Porta: 5000
+http://localhost:5000
 ```
 
-Adicionando task manualmente :
+Após iniciar os containers o celery iniciara o trabalho de verificar nossa base de dados para preencher dados
+ausentes ou até mesmo preencher toda a base caso não exista nenhum dado na nossa base.
 
-```bash
-python app.py
-```
+o Celery esta programado para fazer uma varredura todos os dias à meia-noite para que nossa base de dados
+permaneça atualizada, todo esse processamento é feito de modo assíncrono para cada localidade (concelhos de
+Portugal).
 
-Após o comando a task será adicionada a fila e será executada assim que nosso worker estiver livre.
-
-## Cronjob diário
-
-A aplicação esta programada para realizar atualizações na base de dados para completar informações.
-Para que o Celery consiga iniciar o trabalho com tarefas agendadas podemos utilizar o comando:
-(É necessário que nosso worker esteja executando)
-
-```bash
-celery -A task beat -l info
-```
-
-O Celery esta programado para executar a task diariamente à meia-noite.
-Mas caso queira visualizar o funcionamento basta executar de forma manual
-como:
-
-```bash
-python app.py
-```
-
-Após isso o nosso worker vai iniciar um trabalho com nossas tasks.
-Cada tarefa é executada de modo assíncrono para cada localidade.
-
-Podemos ver o andamento das nossas tasks no terminal ou
-podemos utilizar um software para visualizar nossa base de dados com mais clareza, recomendações:
-robo3t ou mongo compass.
-
-Visto que o mongo é executado nosso container docker, podemos conectar na URL: mongodb://localhost:27017
+Podemos consumir a API, visto que esse processamento esta sendo feito de modo assíncrono, mas pode exigir um tempo até que nossa base de dados esteja completa.

@@ -17,7 +17,6 @@ def setup_periodic_tasks(sender, **kwargs):
 
 @celery.task
 def check_task():
-    print('Initialized Connection')
     result = check_database()
     if not(result):
         import_locations_forecasts_task_cron.delay()
