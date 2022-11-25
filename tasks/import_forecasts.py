@@ -21,7 +21,7 @@ class ImportForecasts():
                 feed_database.insert_one_data(body)
             else:
                 feed_database.insert_one_data({'city_name': city, 'data': 0})
-        elif location or location.get('data') == 0:
+        elif location:
             if body:
                 feed_database.get_collection().update_one({'city_name': city}, {'$set': body})
             

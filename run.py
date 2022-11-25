@@ -5,7 +5,7 @@ from src.modules.locations.use_cases.get_when_sunrises_earlier.get_when_sunrises
 from src.modules.locations.use_cases.get_locations_with_less_wind.get_locations_with_less_wind_controller import get_locations_with_less_wind_controller
 from src.modules.locations.use_cases.get_average_temperature.get_average_temperature_controller import get_average_temperature_controller
 
-@server.app.route('/locations')
+@server.app.route('/')
 def get_locations():
     return get_locations_controller.execute()
 
