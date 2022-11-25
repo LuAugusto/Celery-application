@@ -58,7 +58,7 @@ docker-compose up
 
 ```bash
 Porta: 5000
-http://localhost:5000/locations
+http://localhost:5000
 ```
 
 Após iniciar os containers o celery iniciara o trabalho de verificar nossa base de dados para preencher dados
@@ -74,7 +74,7 @@ Podemos consumir a API, visto que esse processamento esta sendo feito de modo as
 
     ```bash
     Port: 5000
-    get: /locations
+    get: /
         description: retorna todas as localidades disponiveis
 
 

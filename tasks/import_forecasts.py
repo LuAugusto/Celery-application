@@ -26,7 +26,7 @@ class ImportForecasts():
                 feed_database.get_collection().update_one({'city_name': city}, {'$set': body})
             
     def fetch_data(self, city):
-        return requester.make_url(city, country=variables.COUNTRY, days=variables.DAYS, key=variables.KEY)
+        return requester.make_url(city, country=variables.COUNTRY, days=variables.DAYS, key=variables.KEY_TEST)
     
     def validate_data(self, body: dict):
         if not(body):
